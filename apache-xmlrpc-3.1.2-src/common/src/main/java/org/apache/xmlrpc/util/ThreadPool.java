@@ -158,18 +158,23 @@ public class ThreadPool {
 		if (maxSize != 0  &&  runningThreads.size() >= maxSize) {
 			return false;
 		}
-        Poolable poolable;
-		if (waitingThreads.size() > 0) {
-		    poolable = (Poolable) waitingThreads.remove(waitingThreads.size()-1);
-		} else {
-            poolable = new Poolable(threadGroup, num++);
-		}
-		runningThreads.add(poolable);
+        Poolable poolable = getPoolable();
+        runningThreads.add(poolable);
         poolable.start(pTask);
 		return true;
 	}
 
-	/** Adds a task for immediate or deferred execution.
+    private Poolable getPoolable() {
+        Poolable poolable;
+        if (waitingThreads.size() > 0) {
+            poolable = (Poolable) waitingThreads.remove(waitingThreads.size()-1);
+        } else {
+poolable = new Poolable(threadGroup, num++);
+        }
+        return poolable;
+    }
+
+    /** Adds a task for immediate or deferred execution.
 	 * @param pTask The task being added.
 	 * @return True, if the task was started immediately. False, if
 	 * the task will be executed later.

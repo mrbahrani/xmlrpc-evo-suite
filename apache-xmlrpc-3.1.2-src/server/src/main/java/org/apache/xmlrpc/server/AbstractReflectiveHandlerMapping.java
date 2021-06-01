@@ -37,6 +37,7 @@ import org.apache.xmlrpc.metadata.XmlRpcListableHandlerMapping;
 import org.apache.xmlrpc.metadata.XmlRpcMetaDataHandler;
 import org.apache.xmlrpc.server.RequestProcessorFactoryFactory.RequestProcessorFactory;
 
+/** Refactored but no smell found **/
 
 /** Abstract base class of handler mappings, which are
  * using reflection.

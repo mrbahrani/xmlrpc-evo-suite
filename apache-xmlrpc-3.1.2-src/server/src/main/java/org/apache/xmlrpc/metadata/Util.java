@@ -29,7 +29,7 @@ import java.util.Map;
 import org.apache.xmlrpc.XmlRpcException;
 import org.w3c.dom.Node;
 
-
+/* No smell */
 /** Utility class, which provides services to meta data
  * handlers and handler mappings.
  */

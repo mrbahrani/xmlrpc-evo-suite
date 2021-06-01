@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.    
  */
+
+/* It had a God Class. However, evoSuite couldn't refactor it */
 package org.apache.xmlrpc.webserver;
 
 import java.io.BufferedInputStream;

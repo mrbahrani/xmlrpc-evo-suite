@@ -310,6 +310,12 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
+        <groupId>org.evosuite</groupId>
+        <artifactId>evosuite-standalone-runtime</artifactId>
+        <version>1.0.6</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
         <groupId>commons-httpclient</groupId>
         <artifactId>commons-httpclient</artifactId>
         <version>3.0.1</version>
@@ -564,12 +570,12 @@
     <xmlrpc.www.url>scp://people.apache.org/www/ws.apache.org/xmlrpc</xmlrpc.www.url>
     <xmlrpc.www.id>people.apache.org</xmlrpc.www.id>
   </properties>
-<!--  <pluginRepositories>-->
-<!--    <pluginRepository>-->
-<!--      <id>EvoSuite</id>-->
-<!--      <name>EvoSuite Repository</name>-->
-<!--      <url>http://www.evosuite.org/m2</url>-->
-<!--    </pluginRepository>-->
-<!--  </pluginRepositories>-->
+  <pluginRepositories>
+    <pluginRepository>
+      <id>EvoSuite</id>
+      <name>EvoSuite Repository</name>
+      <url>http://www.evosuite.org/m2</url>
+    </pluginRepository>
+  </pluginRepositories>
 
 </project>

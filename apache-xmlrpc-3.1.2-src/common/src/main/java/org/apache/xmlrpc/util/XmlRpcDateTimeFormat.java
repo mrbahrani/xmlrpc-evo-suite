@@ -24,7 +24,7 @@ import java.text.Format;
 import java.text.ParsePosition;
 import java.util.Calendar;
 import java.util.TimeZone;
-
+/* No smell found By JDo! */
 
 /** <p>An instance of {@link java.text.Format}, which may be used
  * to parse and format <code>dateTime</code> values, as specified

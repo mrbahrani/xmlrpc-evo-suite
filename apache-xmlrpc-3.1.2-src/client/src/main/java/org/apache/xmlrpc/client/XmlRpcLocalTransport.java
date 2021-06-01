@@ -30,7 +30,7 @@ import org.apache.xmlrpc.common.TypeConverter;
 import org.apache.xmlrpc.common.TypeConverterFactory;
 import org.apache.xmlrpc.common.XmlRpcExtensionException;
 import org.apache.xmlrpc.common.XmlRpcRequestProcessor;
-
+/* No smell found */
 /** The default implementation of a local transport.
  */
 public class XmlRpcLocalTransport extends XmlRpcTransportImpl {

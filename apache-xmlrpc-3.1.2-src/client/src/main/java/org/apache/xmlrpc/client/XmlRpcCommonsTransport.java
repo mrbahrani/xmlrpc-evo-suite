@@ -127,16 +127,21 @@ public class XmlRpcCommonsTransport extends XmlRpcHttpTransport {
 	protected void setCredentials(XmlRpcHttpClientConfig pConfig) throws XmlRpcClientException {
 		String userName = pConfig.getBasicUserName();
 		if (userName != null) {
-            String enc = pConfig.getBasicEncoding();
-            if (enc == null) {
-                enc = XmlRpcStreamConfig.UTF8_ENCODING;
-            }
-            client.getParams().setParameter(HttpMethodParams.CREDENTIAL_CHARSET, enc);
+			String enc = getEnc(pConfig);
+			client.getParams().setParameter(HttpMethodParams.CREDENTIAL_CHARSET, enc);
 			Credentials creds = new UsernamePasswordCredentials(userName, pConfig.getBasicPassword());
 			AuthScope scope = new AuthScope(null, AuthScope.ANY_PORT, null, AuthScope.ANY_SCHEME);
 			client.getState().setCredentials(scope, creds);
             client.getParams().setAuthenticationPreemptive(true);
         }
+	}
+
+	private String getEnc(XmlRpcHttpClientConfig pConfig) {
+		String enc = pConfig.getBasicEncoding();
+		if (enc == null) {
+			enc = XmlRpcStreamConfig.UTF8_ENCODING;
+		}
+		return enc;
 	}
 
 	protected void close() throws XmlRpcClientException {

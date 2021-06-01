@@ -32,7 +32,7 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
-
+/* No smell found */
 /** A SAX parser for an {@link org.apache.xmlrpc.server.XmlRpcServer}'s
  * response.
  */

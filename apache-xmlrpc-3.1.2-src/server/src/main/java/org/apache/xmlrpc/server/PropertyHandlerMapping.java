@@ -17,7 +17,7 @@
  * under the License.    
  */
 package org.apache.xmlrpc.server;
-
+/* No smell found by evoSuite */
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;

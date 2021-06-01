@@ -14,8 +14,10 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License.    
+ * under the License.
  */
+
+/*Couldn't fix God class problem*/
 package org.apache.xmlrpc.server;
 
 import java.io.ByteArrayOutputStream;
@@ -55,7 +57,7 @@ public abstract class XmlRpcStreamServer extends XmlRpcServer
 	private XmlWriterFactory writerFactory = new DefaultXMLWriterFactory();
 	private static final XmlRpcErrorLogger theErrorLogger = new XmlRpcErrorLogger();
 	private XmlRpcErrorLogger errorLogger = theErrorLogger;
-	
+
 	protected XmlRpcRequest getRequest(final XmlRpcStreamRequestConfig pConfig,
 									   InputStream pStream) throws XmlRpcException {
 		final XmlRpcRequestParser parser = new XmlRpcRequestParser(pConfig, getTypeFactory());
@@ -179,7 +181,7 @@ public abstract class XmlRpcStreamServer extends XmlRpcServer
 		return false;
 	}
 
-	/** Returns, whether the 
+	/** Returns, whether the
 	/** Processes a "connection". The "connection" is an opaque object, which is
 	 * being handled by the subclasses.
 	 * @param pConfig The request configuration.

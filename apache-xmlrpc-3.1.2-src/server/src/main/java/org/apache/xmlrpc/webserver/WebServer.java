@@ -14,24 +14,19 @@
  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
  * KIND, either express or implied.  See the License for the
  * specific language governing permissions and limitations
- * under the License.    
+ * under the License.
  */
 package org.apache.xmlrpc.webserver;
 
-import java.io.IOException;
-import java.io.InterruptedIOException;
-import java.net.BindException;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.net.SocketException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
-
+import org.apache.xmlrpc.server.XmlRpcServer;
 import org.apache.xmlrpc.server.XmlRpcStreamServer;
 import org.apache.xmlrpc.util.ThreadPool;
 
+import java.io.IOException;
+import java.io.InterruptedIOException;
+import java.net.*;
+import java.util.StringTokenizer;
+/* I personally modified the God class so it works */
 
 /**
  * <p>The {@link WebServer} is a minimal HTTP server, that might be used
@@ -70,9 +65,11 @@ import org.apache.xmlrpc.util.ThreadPool;
  * </pre>
  */
 public class WebServer implements Runnable {
-	private class AddressMatcher {
+	private WebServerProduct webServerProduct = new WebServerProduct();
+
+	public class AddressMatcher {
 		private final int pattern[];
-		
+
 		AddressMatcher(String pAddress) {
 			try {
 				pattern = new int[4];
@@ -80,14 +77,14 @@ public class WebServer implements Runnable {
 				if (st.countTokens() != 4) {
 					throw new IllegalArgumentException();
 				}
-				for (int i = 0; i < 4; i++)	{
+				for (int i = 0; i < 4; i++) {
 					String next = st.nextToken();
 					if ("*".equals(next)) {
 						pattern[i] = 256;
 					} else {
-					    /* Note: *Not* pattern[i] = Integer.parseInt(next);
-					     * See XMLRPC-145
-					     */
+						/* Note: *Not* pattern[i] = Integer.parseInt(next);
+						 * See XMLRPC-145
+						 */
 						pattern[i] = (byte) Integer.parseInt(next);
 					}
 				}
@@ -96,9 +93,9 @@ public class WebServer implements Runnable {
 						+ "\" does not represent a valid IP address");
 			}
 		}
-		
+
 		boolean matches(byte[] pAddress) {
-			for (int i = 0; i < 4; i++)	{
+			for (int i = 0; i < 4; i++) {
 				if (pattern[i] > 255) {
 					continue; // Wildcard
 				}
@@ -113,57 +110,58 @@ public class WebServer implements Runnable {
 	protected ServerSocket serverSocket;
 	private Thread listener;
 	private ThreadPool pool;
-	protected final List accept = new ArrayList();
-	protected final List deny = new ArrayList();
 	protected final XmlRpcStreamServer server = newXmlRpcStreamServer();
 
-	protected XmlRpcStreamServer newXmlRpcStreamServer(){
+	protected XmlRpcStreamServer newXmlRpcStreamServer() {
 		return new ConnectionServer();
 	}
 
 	// Inputs to setupServerSocket()
 	private InetAddress address;
 	private int port;
-	
-	private boolean paranoid;
-	
+
 	static final String HTTP_11 = "HTTP/1.1";
-	/** Creates a web server at the specified port number.
+
+	/**
+	 * Creates a web server at the specified port number.
+	 *
 	 * @param pPort Port number; 0 for a random port, choosen by the
-	 * operating system.
+	 *              operating system.
 	 */
 	public WebServer(int pPort) {
 		this(pPort, null);
 	}
-	
-	/** Creates a web server at the specified port number and IP address.
+
+	/**
+	 * Creates a web server at the specified port number and IP address.
+	 *
 	 * @param pPort Port number; 0 for a random port, choosen by the
-	 * operating system.
+	 *              operating system.
 	 * @param pAddr Local IP address; null for all available IP addresses.
 	 */
 	public WebServer(int pPort, InetAddress pAddr) {
 		address = pAddr;
 		port = pPort;
 	}
-	
+
 	/**
 	 * Factory method to manufacture the server socket.  Useful as a
 	 * hook method for subclasses to override when they desire
 	 * different flavor of socket (i.e. a <code>SSLServerSocket</code>).
 	 *
-	 * @param pPort Port number; 0 for a random port, choosen by the operating
-	 * system.
+	 * @param pPort   Port number; 0 for a random port, choosen by the operating
+	 *                system.
 	 * @param backlog
-	 * @param addr If <code>null</code>, binds to
-	 * <code>INADDR_ANY</code>, meaning that all network interfaces on
-	 * a multi-homed host will be listening.
-	 * @exception IOException Error creating listener socket.
+	 * @param addr    If <code>null</code>, binds to
+	 *                <code>INADDR_ANY</code>, meaning that all network interfaces on
+	 *                a multi-homed host will be listening.
+	 * @throws IOException Error creating listener socket.
 	 */
 	protected ServerSocket createServerSocket(int pPort, int backlog, InetAddress addr)
 			throws IOException {
 		return new ServerSocket(pPort, backlog, addr);
 	}
-	
+
 	/**
 	 * Initializes this server's listener socket with the specified
 	 * attributes, assuring that a socket timeout has been set.  The
@@ -178,7 +176,7 @@ public class WebServer implements Runnable {
 		// times.  Some OSes (Linux and Solaris, for example), hold on
 		// to listener sockets for a brief period of time for security
 		// reasons before relinquishing their hold.
-		for (int i = 1;  ;  i++) {
+		for (int i = 1; ; i++) {
 			try {
 				serverSocket = createServerSocket(port, backlog, address);
 				// A socket timeout must be set.
@@ -191,7 +189,7 @@ public class WebServer implements Runnable {
 					throw e;
 				} else {
 					long waitUntil = System.currentTimeMillis() + 1000;
-					for (;;) {
+					for (; ; ) {
 						long l = waitUntil - System.currentTimeMillis();
 						if (l > 0) {
 							try {
@@ -199,24 +197,24 @@ public class WebServer implements Runnable {
 							} catch (InterruptedException ex) {
 							}
 						} else {
-						    break;
+							break;
                         }
 					}
 				}
 			}
 		}
 	}
-	
+
 	/**
 	 * Spawns a new thread which binds this server to the port it's
 	 * configured to accept connections on.
 	 *
-	 * @see #run()
 	 * @throws IOException Binding the server socket failed.
+	 * @see #run()
 	 */
 	public void start() throws IOException {
 		setupServerSocket(50);
-		
+
 		// The listener reference is released upon shutdown().
 		if (listener == null) {
 			listener = new Thread(this, "XML-RPC Weblistener");
@@ -224,52 +222,57 @@ public class WebServer implements Runnable {
 			listener.start();
 		}
 	}
-	
+
 	/**
 	 * Switch client filtering on/off.
+	 *
 	 * @param pParanoid True to enable filtering, false otherwise.
-	 * @see #acceptClient(java.lang.String)
-	 * @see #denyClient(java.lang.String)
+	 * @see #acceptClient(String)
+	 * @see #denyClient(String)
 	 */
 	public void setParanoid(boolean pParanoid) {
-		paranoid = pParanoid;
+		webServerProduct.setParanoid(pParanoid);
 	}
 
 	/**
 	 * Returns the client filtering state.
+	 *
 	 * @return True, if client filtering is enabled, false otherwise.
-	 * @see #acceptClient(java.lang.String)
-	 * @see #denyClient(java.lang.String)
+	 * @see #acceptClient(String)
+	 * @see #denyClient(String)
 	 */
 	protected boolean isParanoid() {
-		return paranoid;
+		return webServerProduct.getParanoid();
 	}
-	
-	/** Add an IP address to the list of accepted clients. The parameter can
+
+	/**
+	 * Add an IP address to the list of accepted clients. The parameter can
 	 * contain '*' as wildcard character, e.g. "192.168.*.*". You must call
 	 * setParanoid(true) in order for this to have any effect.
+	 *
 	 * @param pAddress The IP address being enabled.
-	 * @see #denyClient(java.lang.String)
-	 * @see #setParanoid(boolean)
 	 * @throws IllegalArgumentException Parsing the address failed.
+	 * @see #denyClient(String)
+	 * @see #setParanoid(boolean)
 	 */
 	public void acceptClient(String pAddress) {
-		accept.add(new AddressMatcher(pAddress));
+		webServerProduct.getAccept().add(new AddressMatcher(pAddress));
 	}
-	
+
 	/**
 	 * Add an IP address to the list of denied clients. The parameter can
 	 * contain '*' as wildcard character, e.g. "192.168.*.*". You must call
 	 * setParanoid(true) in order for this to have any effect.
+	 *
 	 * @param pAddress The IP address being disabled.
-	 * @see #acceptClient(java.lang.String)
-	 * @see #setParanoid(boolean)
 	 * @throws IllegalArgumentException Parsing the address failed.
+	 * @see #acceptClient(String)
+	 * @see #setParanoid(boolean)
 	 */
 	public void denyClient(String pAddress) {
-		deny.add(new AddressMatcher(pAddress));
+		webServerProduct.getDeny().add(new AddressMatcher(pAddress));
 	}
-	
+
 	/**
 	 * Checks incoming connections to see if they should be allowed.
 	 * If not in paranoid mode, always returns true.
@@ -278,31 +281,11 @@ public class WebServer implements Runnable {
 	 * @return Whether the connection should be allowed.
 	 */
 	protected boolean allowConnection(Socket s) {
-		if (!paranoid) {
-			return true;
-		}
-		
-		int l = deny.size();
-		byte addr[] = s.getInetAddress().getAddress();
-		for (int i = 0; i < l; i++) {
-			AddressMatcher match = (AddressMatcher) deny.get(i);
-			if (match.matches(addr))
-			{
-				return false;
-			}
-		}
-		l = accept.size();
-		for (int i = 0; i < l; i++) {
-			AddressMatcher match = (AddressMatcher) accept.get(i);
-			if (match.matches(addr)) {
-				return true;
-			}
-		}
-		return false;
+		return webServerProduct.allowConnection(s);
 	}
 
 	protected ThreadPool.Task newTask(WebServer pServer, XmlRpcStreamServer pXmlRpcServer,
-						   			  Socket pSocket) throws IOException {
+									  Socket pSocket) throws IOException {
 		return new Connection(pServer, pXmlRpcServer, pSocket);
 	}
 
@@ -312,9 +295,8 @@ public class WebServer implements Runnable {
 	 * break out of it.
 	 *
 	 * @throws RuntimeException Generally caused by either an
-	 * <code>UnknownHostException</code> or <code>BindException</code>
-	 * with the vanilla web server.
-	 *
+	 *                          <code>UnknownHostException</code> or <code>BindException</code>
+	 *                          with the vanilla web server.
 	 * @see #start()
 	 * @see #shutdown()
 	 */
@@ -329,21 +311,26 @@ public class WebServer implements Runnable {
 					} catch (SocketException socketOptEx) {
 						log(socketOptEx);
 					}
-					
+
 					try {
-						if (allowConnection(socket)) {
-					        // set read timeout to 30 seconds
-					        socket.setSoTimeout(30000);
+						if (webServerProduct.allowConnection(socket)) {
+							// set read timeout to 30 seconds
+							socket.setSoTimeout(30000);
 							final ThreadPool.Task task = newTask(this, server, socket);
 							if (pool.startTask(task)) {
 								socket = null;
 							} else {
 								log("Maximum load of " + pool.getMaxThreads()
-									+ " exceeded, rejecting client");
+										+ " exceeded, rejecting client");
 							}
 						}
 					} finally {
-						if (socket != null) { try { socket.close(); } catch (Throwable ignore) {} }
+						if (socket != null) {
+							try {
+								socket.close();
+							} catch (Throwable ignore) {
+							}
+						}
 					}
 				} catch (InterruptedIOException checkState) {
 					// Timeout while waiting for a client (from
@@ -360,7 +347,7 @@ public class WebServer implements Runnable {
 					log(e);
 				}
 			}
-			
+
 			// Shutdown our Runner-based threads
 			pool.shutdown();
 		}
@@ -369,7 +356,7 @@ public class WebServer implements Runnable {
     protected ThreadPool newThreadPool() {
         return new ThreadPool(server.getMaxThreads(), "XML-RPC");
     }
-	
+
 	/**
 	 * Stop listening on the server port.  Shutting down our {@link
 	 * #listener} effectively breaks it out of its {@link #run()}
@@ -388,29 +375,39 @@ public class WebServer implements Runnable {
             }
 		}
 	}
-	
-	/** Returns the port, on which the web server is running.
+
+	/**
+	 * Returns the port, on which the web server is running.
 	 * This method may be invoked after {@link #start()} only.
+	 *
 	 * @return Servers port number
 	 */
-	public int getPort() { return serverSocket.getLocalPort(); }
+	public int getPort() {
+		return serverSocket.getLocalPort();
+	}
 
-	/** Logs an error.
+	/**
+	 * Logs an error.
+	 *
 	 * @param pError The error being logged.
 	 */
 	public void log(Throwable pError) {
-	    final String msg = pError.getMessage() == null ? pError.getClass().getName() : pError.getMessage();
-	    server.getErrorLogger().log(msg, pError);
+		final String msg = pError.getMessage() == null ? pError.getClass().getName() : pError.getMessage();
+		server.getErrorLogger().log(msg, pError);
 	}
 
-	/** Logs a message.
+	/**
+	 * Logs a message.
+	 *
 	 * @param pMessage The being logged.
 	 */
 	public void log(String pMessage) {
         server.getErrorLogger().log(pMessage);
 	}
 
-	/** Returns the {@link org.apache.xmlrpc.server.XmlRpcServer}.
+	/**
+	 * Returns the {@link XmlRpcServer}.
+	 *
 	 * @return The server object.
 	 */
 	public XmlRpcStreamServer getXmlRpcServer() {

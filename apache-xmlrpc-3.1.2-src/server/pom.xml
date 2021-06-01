@@ -61,6 +61,14 @@
           </excludes>
         </configuration>
       </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>5</source>
+                <target>5</target>
+            </configuration>
+        </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -86,6 +94,12 @@
     <dependency>
       <groupId>commons-httpclient</groupId>
       <artifactId>commons-httpclient</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.evosuite</groupId>
+      <artifactId>evosuite-master</artifactId>
+      <version>1.0.6</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

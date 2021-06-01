@@ -264,6 +264,16 @@ public class HttpServletRequestImpl implements HttpServletRequest {
 			} catch (Exception e) {
 			}
 		}
+		boolean isDefaultPort = isDefaultPort(scheme, port);
+		if (!isDefaultPort) {
+			sb.append(':');
+			sb.append(port);
+		}
+		sb.append(getRequestURI());
+		return sb;
+	}
+
+	private boolean isDefaultPort(String scheme, int port) {
 		boolean isDefaultPort;
 		if ("http".equalsIgnoreCase(scheme)) {
 			isDefaultPort = port == 80;
@@ -272,12 +282,7 @@ public class HttpServletRequestImpl implements HttpServletRequest {
 		} else {
 			isDefaultPort = false;
 		}
-		if (!isDefaultPort) {
-			sb.append(':');
-			sb.append(port);
-		}
-		sb.append(getRequestURI());
-		return sb;
+		return isDefaultPort;
 	}
 
 	public String getRequestedSessionId() { throw new IllegalStateException("Not implemented"); }
@@ -356,16 +361,21 @@ public class HttpServletRequestImpl implements HttpServletRequest {
 		if (o == null) {
 			pParams.put(pKey, pValue);
 		} else {
-			List list;
-			if (o instanceof String) {
-				list = new ArrayList();
-				list.add(o);
-				pParams.put(pKey, list);
-			} else {
-				list = (List) o;
-			}
+			List list = getList(pParams, pKey, o);
 			list.add(pParams);
 		}
+	}
+
+	private List getList(Map pParams, String pKey, Object o) {
+		List list;
+		if (o instanceof String) {
+			list = new ArrayList();
+			list.add(o);
+			pParams.put(pKey, list);
+		} else {
+			list = (List) o;
+		}
+		return list;
 	}
 
 	private void parseQueryString(Map pParams, String pQueryString, String pEncoding) throws UnsupportedEncodingException {
@@ -413,10 +423,7 @@ public class HttpServletRequestImpl implements HttpServletRequest {
 		if (parameters != null) {
 			return;
 		}
-		String encoding = getCharacterEncoding();
-		if (encoding == null) {
-			encoding = XmlRpcStreamConfig.UTF8_ENCODING;
-		}
+		String encoding = getString2();
 		Map params = new HashMap();
 		String s = getQueryString();
 		if (s != null) {
@@ -441,6 +448,14 @@ public class HttpServletRequestImpl implements HttpServletRequest {
 			}
 		}
 		parameters = params;
+	}
+
+	private String getString2() {
+		String encoding = getCharacterEncoding();
+		if (encoding == null) {
+			encoding = XmlRpcStreamConfig.UTF8_ENCODING;
+		}
+		return encoding;
 	}
 
 	public String getParameter(String pName) {
@@ -497,16 +512,21 @@ public class HttpServletRequestImpl implements HttpServletRequest {
 				if (postParametersParsed) {
 					throw new IllegalStateException("The method getReader() must not be called, after POST parameters have been parsed.");
 				}
-				String encoding = getCharacterEncoding();
-				if (encoding == null) {
-					encoding = "UTF8";
-				}
+				String encoding = getString();
 				reader = new BufferedReader(new InputStreamReader(istream, encoding));
 			}
 			return reader;
 		} else {
 			throw new IllegalStateException("The methods getInputStream(), and getReader(), are mutually exclusive.");
 		}
+	}
+
+	private String getString() {
+		String encoding = getCharacterEncoding();
+		if (encoding == null) {
+			encoding = "UTF8";
+		}
+		return encoding;
 	}
 
 	public String getRealPath(String pPath) { throw new IllegalStateException("Not implemented."); }

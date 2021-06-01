@@ -36,6 +36,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
+/* No smell found */
 
 /** Implementation of a transport class, which is based on an output
  * stream for sending the request and an input stream for receiving

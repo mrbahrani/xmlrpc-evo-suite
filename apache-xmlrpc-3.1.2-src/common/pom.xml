@@ -72,5 +72,11 @@
       <artifactId>jaxmeapi</artifactId>
       <scope>provided</scope>
     </dependency>
+      <dependency>
+          <groupId>org.evosuite</groupId>
+          <artifactId>evosuite-master</artifactId>
+          <version>1.0.6</version>
+          <scope>test</scope>
+      </dependency>
   </dependencies>
 </project>

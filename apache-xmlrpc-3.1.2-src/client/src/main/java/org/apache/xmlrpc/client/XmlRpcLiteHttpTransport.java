@@ -42,6 +42,7 @@ import org.apache.xmlrpc.util.HttpUtil;
 import org.apache.xmlrpc.util.LimitedInputStream;
 import org.xml.sax.SAXException;
 
+/* No smell found */
 
 /**
  * A "light" HTTP transport implementation.
@@ -87,16 +88,21 @@ public class XmlRpcLiteHttpTransport extends XmlRpcHttpTransport {
 		if (value == null) {
 			headers.put(pHeader, pValue);
 		} else {
-			List list;
-			if (value instanceof String) {
-				list = new ArrayList();
-				list.add(value);
-				headers.put(pHeader, list);
-			} else {
-				list = (List) value;
-			}
+			List list = getList(pHeader, value);
 			list.add(pValue);
 		}
+	}
+
+	private List getList(String pHeader, Object value) {
+		List list;
+		if (value instanceof String) {
+			list = new ArrayList();
+			list.add(value);
+			headers.put(pHeader, list);
+		} else {
+			list = (List) value;
+		}
+		return list;
 	}
 
 	protected void close() throws XmlRpcClientException {

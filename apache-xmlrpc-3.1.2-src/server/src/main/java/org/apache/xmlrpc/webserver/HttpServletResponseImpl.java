@@ -72,16 +72,21 @@ public class HttpServletResponseImpl implements HttpServletResponse {
 		if (o == null) {
 			headers.put(key, pValue);
 		} else {
-			List list;
-			if (o instanceof String) {
-				list = new ArrayList();
-				headers.put(key, list);
-				list.add(o);
-			} else {
-				list = (List) o;
-			}
+			List list = getList(key, o);
 			list.add(pValue);
 		}
+	}
+
+	private List getList(String key, Object o) {
+		List list;
+		if (o instanceof String) {
+			list = new ArrayList();
+			headers.put(key, list);
+			list.add(o);
+		} else {
+			list = (List) o;
+		}
+		return list;
 	}
 
 	private String getHeader(String pHeader) {
@@ -298,22 +303,32 @@ public class HttpServletResponseImpl implements HttpServletResponse {
 			boolean charSetFound = false;
 			StringBuffer sb = new StringBuffer();
 			for (StringTokenizer st = new StringTokenizer(pType, ";");  st.hasMoreTokens();  ) {
-				String t = st.nextToken();
-				if (t.toLowerCase().startsWith("charset=")) {
-					charSetFound = true;
-					setCharacterEncoding(t.substring("charset=".length()).trim());
-				} else {
-					if (sb.length() > 0) {
-						sb.append("; ");
-					}
-					sb.append(t);
-				}
+				charSetFound = isCharSetFound(charSetFound, sb, st);
 			}
-			if (charSetFound) {
-				pType = sb.toString();
-			}
+			pType = getString1(pType, charSetFound, sb);
 		}
 		setHeader("content-type", pType);
+	}
+
+	private String getString1(String pType, boolean charSetFound, StringBuffer sb) {
+		if (charSetFound) {
+			pType = sb.toString();
+		}
+		return pType;
+	}
+
+	private boolean isCharSetFound(boolean charSetFound, StringBuffer sb, StringTokenizer st) {
+		String t = st.nextToken();
+		if (t.toLowerCase().startsWith("charset=")) {
+			charSetFound = true;
+			setCharacterEncoding(t.substring("charset=".length()).trim());
+		} else {
+			if (sb.length() > 0) {
+				sb.append("; ");
+			}
+			sb.append(t);
+		}
+		return charSetFound;
 	}
 
 	public void setLocale(Locale pLocale) { locale = pLocale; }
@@ -439,9 +454,7 @@ public class HttpServletResponseImpl implements HttpServletResponse {
 			if (o == null) {
 				continue;
 			}
-			if ("content-length".equalsIgnoreCase(header)) {
-				contentLengthSeen = true;
-			}
+			contentLengthSeen = isContentLengthSeen(contentLengthSeen, header);
 			if (o instanceof String) {
 				sb.append(header);
 				sb.append(": ");
@@ -464,5 +477,12 @@ public class HttpServletResponseImpl implements HttpServletResponse {
 		}
 		sb.append("\r\n");
 		return sb.toString();
+	}
+
+	private boolean isContentLengthSeen(boolean contentLengthSeen, String header) {
+		if ("content-length".equalsIgnoreCase(header)) {
+			contentLengthSeen = true;
+		}
+		return contentLengthSeen;
 	}
 }
