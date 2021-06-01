@@ -32,7 +32,7 @@ import org.xml.sax.SAXParseException;
 
 
 /** Abstract base class of a parser, that invokes other type
- * parsers recursively.
+ * parsers recursively
  */
 public abstract class RecursiveTypeParserImpl extends TypeParserImpl {
 	private final NamespaceContextImpl context;
