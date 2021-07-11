@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Project>
+    <totalNumberOfTestableClasses>7</totalNumberOfTestableClasses>
+    <cut>
+        <fullNameOfTargetClass>org.apache.xmlrpc.common.TypeConverterFactoryImpl</fullNameOfTargetClass>
+        <fullNameOfTestSuite>org.apache.xmlrpc.common.TypeConverterFactoryImpl_ESTest</fullNameOfTestSuite>
+        <generation>
+            <id>0</id>
+            <failed>false</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>147</timeBudgetInSeconds>
+            <memoryInMB>1024</memoryInMB>
+            <std_err_CLIENT>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.common.TypeConverterFactoryImpl\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.common.TypeConverterFactoryImpl\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.common.TypeConverterFactoryImpl\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.common.TypeConverterFactoryImpl\std_out_MASTER.log</std_out_MASTER>
+            <suite>
+                <fullPathOfTestSuite>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\tests\org\apache\xmlrpc\common\TypeConverterFactoryImpl_ESTest.java</fullPathOfTestSuite>
+                <numberOfTests>24</numberOfTests>
+                <totalNumberOfStatements>71</totalNumberOfStatements>
+                <totalEffortInSeconds>102</totalEffortInSeconds>
+                <coverage>
+                    <criterion>LineCoverage</criterion>
+                    <coverageValue>0.5</coverageValue>
+                    <coverageBitString>1101111111111111111111111111111111111111111111010101010111010110000000000000001110000000000000000000000000000000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>BranchCoverage</criterion>
+                    <coverageValue>0.46</coverageValue>
+                    <coverageBitString>001000100000000000000000000000000000000000000000000000000010111111111111111111111111111111111111111111101010101011101001</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>ExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>1</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>WeakMutationScore</criterion>
+                    <coverageValue>0.21</coverageValue>
+                    <coverageBitString>0000000000000000000000000000000000000000000000111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>OutputCoverage</criterion>
+                    <coverageValue>0.5</coverageValue>
+                    <coverageBitString>10</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodCoverage</criterion>
+                    <coverageValue>0.14</coverageValue>
+                    <coverageBitString>11000000000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodNoExceptionCoverage</criterion>
+                    <coverageValue>0.14</coverageValue>
+                    <coverageBitString>11000000000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>CBranchCoverage</criterion>
+                    <coverageValue>0.46</coverageValue>
+                    <coverageBitString>000100010000000000000000000000000000000000000000000000000001111111111111111111111111111111111111111111100101011011100101</coverageBitString>
+                </coverage>
+            </suite>
+        </generation>
+    </cut>
+    <cut>
+        <fullNameOfTargetClass>org.apache.xmlrpc.serializer.XmlRpcWriter</fullNameOfTargetClass>
+        <fullNameOfTestSuite>org.apache.xmlrpc.serializer.XmlRpcWriter_ESTest</fullNameOfTestSuite>
+        <generation>
+            <id>0</id>
+            <failed>false</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>96</timeBudgetInSeconds>
+            <memoryInMB>1024</memoryInMB>
+            <std_err_CLIENT>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.serializer.XmlRpcWriter\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.serializer.XmlRpcWriter\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.serializer.XmlRpcWriter\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.serializer.XmlRpcWriter\std_out_MASTER.log</std_out_MASTER>
+            <suite>
+                <fullPathOfTestSuite>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\tests\org\apache\xmlrpc\serializer\XmlRpcWriter_ESTest.java</fullPathOfTestSuite>
+                <numberOfTests>18</numberOfTests>
+                <totalNumberOfStatements>120</totalNumberOfStatements>
+                <totalEffortInSeconds>65</totalEffortInSeconds>
+                <coverage>
+                    <criterion>LineCoverage</criterion>
+                    <coverageValue>0.89</coverageValue>
+                    <coverageBitString>11111111111111111111111111111111111111100000000111111111111111111111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>BranchCoverage</criterion>
+                    <coverageValue>0.93</coverageValue>
+                    <coverageBitString>1111111111111111111101101111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>ExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>WeakMutationScore</criterion>
+                    <coverageValue>0.99</coverageValue>
+                    <coverageBitString>11111111111111111111111111111111111111111111111111111111111111111111111111111111111111011</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>OutputCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString></coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodNoExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>CBranchCoverage</criterion>
+                    <coverageValue>0.93</coverageValue>
+                    <coverageBitString>1111111111111111110111101111</coverageBitString>
+                </coverage>
+            </suite>
+        </generation>
+    </cut>
+    <cut>
+        <fullNameOfTargetClass>org.apache.xmlrpc.util.XmlRpcDateTimeFormat</fullNameOfTargetClass>
+        <fullNameOfTestSuite>org.apache.xmlrpc.util.XmlRpcDateTimeFormat_ESTest</fullNameOfTestSuite>
+        <generation>
+            <id>0</id>
+            <failed>false</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>119</timeBudgetInSeconds>
+            <memoryInMB>1024</memoryInMB>
+            <std_err_CLIENT>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.util.XmlRpcDateTimeFormat\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.util.XmlRpcDateTimeFormat\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.util.XmlRpcDateTimeFormat\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.util.XmlRpcDateTimeFormat\std_out_MASTER.log</std_out_MASTER>
+            <suite>
+                <fullPathOfTestSuite>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\tests\org\apache\xmlrpc\util\XmlRpcDateTimeFormat_ESTest.java</fullPathOfTestSuite>
+                <numberOfTests>0</numberOfTests>
+                <totalNumberOfStatements>0</totalNumberOfStatements>
+                <totalEffortInSeconds>70</totalEffortInSeconds>
+                <coverage>
+                    <criterion>LineCoverage</criterion>
+                    <coverageValue>0.0</coverageValue>
+                    <coverageBitString>000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>BranchCoverage</criterion>
+                    <coverageValue>0.0</coverageValue>
+                    <coverageBitString>0000000000000000000000000000000000000000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>ExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString></coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>WeakMutationScore</criterion>
+                    <coverageValue>0.0</coverageValue>
+                    <coverageBitString>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>OutputCoverage</criterion>
+                    <coverageValue>0.0</coverageValue>
+                    <coverageBitString>000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodCoverage</criterion>
+                    <coverageValue>0.0</coverageValue>
+                    <coverageBitString>00</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodNoExceptionCoverage</criterion>
+                    <coverageValue>0.0</coverageValue>
+                    <coverageBitString>00</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>CBranchCoverage</criterion>
+                    <coverageValue>0.0</coverageValue>
+                    <coverageBitString>0000000000000000000000000000000000000000000</coverageBitString>
+                </coverage>
+            </suite>
+        </generation>
+    </cut>
+    <cut>
+        <fullNameOfTargetClass>org.apache.xmlrpc.parser.MapParser</fullNameOfTargetClass>
+        <fullNameOfTestSuite>org.apache.xmlrpc.parser.MapParser_ESTest</fullNameOfTestSuite>
+        <generation>
+            <id>0</id>
+            <failed>false</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>175</timeBudgetInSeconds>
+            <memoryInMB>1024</memoryInMB>
+            <std_err_CLIENT>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.parser.MapParser\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.parser.MapParser\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.parser.MapParser\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.parser.MapParser\std_out_MASTER.log</std_out_MASTER>
+            <suite>
+                <fullPathOfTestSuite>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\tests\org\apache\xmlrpc\parser\MapParser_ESTest.java</fullPathOfTestSuite>
+                <numberOfTests>11</numberOfTests>
+                <totalNumberOfStatements>64</totalNumberOfStatements>
+                <totalEffortInSeconds>114</totalEffortInSeconds>
+                <coverage>
+                    <criterion>LineCoverage</criterion>
+                    <coverageValue>0.3</coverageValue>
+                    <coverageBitString>11111011100000101110000000000000000001010111111111110000000000000000000000000000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>BranchCoverage</criterion>
+                    <coverageValue>0.23</coverageValue>
+                    <coverageBitString>111001000010001010010101011101000000000000000000000000000101010110000000000000000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>ExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>11111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>WeakMutationScore</criterion>
+                    <coverageValue>0.39</coverageValue>
+                    <coverageBitString>1111000000011110000000000111111111100000000111111111111111111110111010111110000000000000000000000000111111110000000000000000000000000000000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>OutputCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString></coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>1111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodNoExceptionCoverage</criterion>
+                    <coverageValue>0.57</coverageValue>
+                    <coverageBitString>1010110</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>CBranchCoverage</criterion>
+                    <coverageValue>0.23</coverageValue>
+                    <coverageBitString>111010000001000100010111011110000000000000000000000000001001101010000000000000000000</coverageBitString>
+                </coverage>
+            </suite>
+        </generation>
+    </cut>
+    <cut>
+        <fullNameOfTargetClass>org.apache.xmlrpc.util.ThreadPool</fullNameOfTargetClass>
+        <fullNameOfTestSuite>org.apache.xmlrpc.util.ThreadPool_ESTest</fullNameOfTestSuite>
+        <generation>
+            <id>0</id>
+            <failed>true</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>93</timeBudgetInSeconds>
+            <memoryInMB>1024</memoryInMB>
+            <std_err_CLIENT>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.util.ThreadPool\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.util.ThreadPool\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.util.ThreadPool\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.util.ThreadPool\std_out_MASTER.log</std_out_MASTER>
+        </generation>
+    </cut>
+    <cut>
+        <fullNameOfTargetClass>org.apache.xmlrpc.parser.XmlRpcResponseParser</fullNameOfTargetClass>
+        <fullNameOfTestSuite>org.apache.xmlrpc.parser.XmlRpcResponseParser_ESTest</fullNameOfTestSuite>
+        <generation>
+            <id>0</id>
+            <failed>false</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>172</timeBudgetInSeconds>
+            <memoryInMB>1024</memoryInMB>
+            <std_err_CLIENT>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.parser.XmlRpcResponseParser\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.parser.XmlRpcResponseParser\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.parser.XmlRpcResponseParser\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.parser.XmlRpcResponseParser\std_out_MASTER.log</std_out_MASTER>
+            <suite>
+                <fullPathOfTestSuite>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\tests\org\apache\xmlrpc\parser\XmlRpcResponseParser_ESTest.java</fullPathOfTestSuite>
+                <numberOfTests>17</numberOfTests>
+                <totalNumberOfStatements>84</totalNumberOfStatements>
+                <totalEffortInSeconds>110</totalEffortInSeconds>
+                <coverage>
+                    <criterion>LineCoverage</criterion>
+                    <coverageValue>0.33</coverageValue>
+                    <coverageBitString>01101100000000000000000001111000000000000000000000111111111111111110101100000000000000001</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>BranchCoverage</criterion>
+                    <coverageValue>0.41</coverageValue>
+                    <coverageBitString>11111110000011110101011111111011100000000000000000110101011111110000000000000000000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>ExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>WeakMutationScore</criterion>
+                    <coverageValue>0.48</coverageValue>
+                    <coverageBitString>11100000000111111111111111011111011111111101010100111101010100111110000000000000111111111111011111011111000000000000000000000000000000000000000000001111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>OutputCoverage</criterion>
+                    <coverageValue>0.4</coverageValue>
+                    <coverageBitString>0100100110</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>111111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodNoExceptionCoverage</criterion>
+                    <coverageValue>0.89</coverageValue>
+                    <coverageBitString>101111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>CBranchCoverage</criterion>
+                    <coverageValue>0.41</coverageValue>
+                    <coverageBitString>11111110000011011001111111101111100000000000000000111101011011110000000000000000000000</coverageBitString>
+                </coverage>
+            </suite>
+        </generation>
+    </cut>
+    <cut>
+        <fullNameOfTargetClass>org.apache.xmlrpc.parser.XmlRpcRequestParser</fullNameOfTargetClass>
+        <fullNameOfTestSuite>org.apache.xmlrpc.parser.XmlRpcRequestParser_ESTest</fullNameOfTestSuite>
+        <generation>
+            <id>0</id>
+            <failed>false</failed>
+            <modified>true</modified>
+            <timeBudgetInSeconds>155</timeBudgetInSeconds>
+            <memoryInMB>1024</memoryInMB>
+            <std_err_CLIENT>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.parser.XmlRpcRequestParser\std_err_CLIENT.log</std_err_CLIENT>
+            <std_out_CLIENT>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.parser.XmlRpcRequestParser\std_out_CLIENT.log</std_out_CLIENT>
+            <std_err_MASTER>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.parser.XmlRpcRequestParser\std_err_MASTER.log</std_err_MASTER>
+            <std_out_MASTER>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\logs\org.apache.xmlrpc.parser.XmlRpcRequestParser\std_out_MASTER.log</std_out_MASTER>
+            <suite>
+                <fullPathOfTestSuite>E:\Uni\Masters\Term 4\Software\InGit\xmlrpc-evo-suite\apache-xmlrpc-3.1.2-src\common\.evosuite\tmp_2021_07_11_13_30_24\tests\org\apache\xmlrpc\parser\XmlRpcRequestParser_ESTest.java</fullPathOfTestSuite>
+                <numberOfTests>12</numberOfTests>
+                <totalNumberOfStatements>63</totalNumberOfStatements>
+                <totalEffortInSeconds>102</totalEffortInSeconds>
+                <coverage>
+                    <criterion>LineCoverage</criterion>
+                    <coverageValue>0.29</coverageValue>
+                    <coverageBitString>011010001110000000000000000000101111111111110000000000000000000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>BranchCoverage</criterion>
+                    <coverageValue>0.26</coverageValue>
+                    <coverageBitString>1111110001001010101110100000000000000000000010101011000000000000000000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>ExceptionCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>1111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>WeakMutationScore</criterion>
+                    <coverageValue>0.31</coverageValue>
+                    <coverageBitString>111100000000011111111111111111111011101011111000000000000000000000000000000011111111000000000000000000000000000000000000000000000000</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>OutputCoverage</criterion>
+                    <coverageValue>0.22</coverageValue>
+                    <coverageBitString>001000001</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodCoverage</criterion>
+                    <coverageValue>1.0</coverageValue>
+                    <coverageBitString>11111111</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>MethodNoExceptionCoverage</criterion>
+                    <coverageValue>0.62</coverageValue>
+                    <coverageBitString>10101110</coverageBitString>
+                </coverage>
+                <coverage>
+                    <criterion>CBranchCoverage</criterion>
+                    <coverageValue>0.26</coverageValue>
+                    <coverageBitString>1111101001110100001101100000000000000000000001001110100000000000000000000</coverageBitString>
+                </coverage>
+            </suite>
+        </generation>
+    </cut>
+</Project>
